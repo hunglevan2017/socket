@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+        
+<generatorConfiguration>
+ 	<properties resource="jdbc.properties"/>
+	<context id="context1" targetRuntime="MyBatis3">
+	
+		<!-- <plugin type="com.bpo.Common.DeleteExistingSqlMapsPlugin"></plugin> -->
+		
+		 <commentGenerator>
+             <property name="suppressDate" value="true"/>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>
+         
+        
+         			 
+			<!--  
+		<jdbcConnection 
+			connectionURL="${jdbc.url}"
+			driverClass="${jdbc.driverClassName}"
+			password="S@igon_D3v"
+			userId="rls_dev"  />
+			-->
+		
+
+		<jdbcConnection 
+			connectionURL="${jdbc.url}"
+			driverClass="${jdbc.driverClassName}"
+			password="${jdbc.password}"
+			userId="${jdbc.username}"  />
+			
+			
+
+		<!-- JAVA -->
+		<javaModelGenerator targetPackage="com.saigonbpo.wsqc.Model" targetProject="P19006_C035_OTH_PolicyPrinting_247_API" />
+			
+		<!-- XML -->
+		<sqlMapGenerator targetPackage="com.saigonbpo.wsqc.Mapper" targetProject="P19006_C035_OTH_PolicyPrinting_247_API/src/main/resources" />
+		
+		<!-- Mapper 	-->
+		<javaClientGenerator targetPackage="com.saigonbpo.wsqc.Mapper" targetProject="P19006_C035_OTH_PolicyPrinting_247_API" type="XMLMAPPER" />
+		
+	<table schema="${jdbc.schema}" tableName="ree_watch" domainObjectName="ReeWatch"  enableCountByExample="true">
+		<!-- <table schema="db_p18007_c0014_scn_pvgas" tableName="download_sftp" domainObjectName="DownloadSFTP"  enableCountByExample="true">-->		
+			 <!-- 
+	 			<property name="enableInsert" value="true"/>
+	 			<property name="enableSelectByPrimaryKey" value="true"/>
+	 			<property name="enableUpdateByPrimaryKey" value="true"/>
+	 			<property name="enableDeleteByPrimaryKey" value="false"/>
+	 			<property name="selectByPrimaryKeyQueryId" value="false"/>
+	
+	 			<property name="enableSelectByExample" value="false"/>
+	 			<property name="enableDeleteByExample" value="false"/>
+	 			<property name="enableCountByExample" value="false"/>
+	 			<property name="enableUpdateByExample" value="false"/>
+	 			<property name="selectByExampleQueryId" value="false"/>
+	 			<property name="enableSelectByExample" value="false"/>
+ 			 -->
+			 <generatedKey column="id" sqlStatement="JDBC" identity="true"/>  
+		</table>
+		
+	</context>
+	
+
+		
+</generatorConfiguration>

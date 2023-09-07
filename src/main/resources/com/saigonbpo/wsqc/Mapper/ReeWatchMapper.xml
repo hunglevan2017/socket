@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saigonbpo.wsqc.Mapper.ReeWatchMapper">
+  <resultMap id="BaseResultMap" type="com.saigonbpo.wsqc.Model.ReeWatch">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="str_md5" jdbcType="VARCHAR" property="strMd5" />
+    <result column="dice" jdbcType="VARCHAR" property="dice" />
+    <result column="total_dice" jdbcType="VARCHAR" property="totalDice" />
+    <result column="result_bet" jdbcType="VARCHAR" property="resultBet" />
+    <result column="insert_date" jdbcType="TIMESTAMP" property="insertDate" />
+    <result column="result_bet_bin" jdbcType="VARCHAR" property="resultBetBin" />
+    <result column="trend" jdbcType="VARCHAR" property="trend" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, str_md5, dice, total_dice, result_bet, insert_date, result_bet_bin, trend
+  </sql>
+  <select id="selectByExample" parameterType="com.saigonbpo.wsqc.Model.ReeWatchExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from public.ree_watch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 21
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from public.ree_watch
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from public.ree_watch
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saigonbpo.wsqc.Model.ReeWatchExample">
+    delete from public.ree_watch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeWatch" useGeneratedKeys="true">
+    insert into public.ree_watch (str_md5, dice, total_dice, 
+      result_bet, insert_date, result_bet_bin, 
+      trend)
+    values (#{strMd5,jdbcType=VARCHAR}, #{dice,jdbcType=VARCHAR}, #{totalDice,jdbcType=VARCHAR}, 
+      #{resultBet,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{resultBetBin,jdbcType=VARCHAR}, 
+      #{trend,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeWatch" useGeneratedKeys="true">
+    insert into public.ree_watch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="strMd5 != null">
+        str_md5,
+      </if>
+      <if test="dice != null">
+        dice,
+      </if>
+      <if test="totalDice != null">
+        total_dice,
+      </if>
+      <if test="resultBet != null">
+        result_bet,
+      </if>
+      <if test="insertDate != null">
+        insert_date,
+      </if>
+      <if test="resultBetBin != null">
+        result_bet_bin,
+      </if>
+      <if test="trend != null">
+        trend,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="strMd5 != null">
+        #{strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="dice != null">
+        #{dice,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDice != null">
+        #{totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="resultBet != null">
+        #{resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null">
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultBetBin != null">
+        #{resultBetBin,jdbcType=VARCHAR},
+      </if>
+      <if test="trend != null">
+        #{trend,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saigonbpo.wsqc.Model.ReeWatchExample" resultType="java.lang.Long">
+    select count(*) from public.ree_watch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update public.ree_watch
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.strMd5 != null">
+        str_md5 = #{row.strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dice != null">
+        dice = #{row.dice,jdbcType=VARCHAR},
+      </if>
+      <if test="row.totalDice != null">
+        total_dice = #{row.totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="row.resultBet != null">
+        result_bet = #{row.resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="row.insertDate != null">
+        insert_date = #{row.insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.resultBetBin != null">
+        result_bet_bin = #{row.resultBetBin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.trend != null">
+        trend = #{row.trend,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update public.ree_watch
+    set id = #{row.id,jdbcType=BIGINT},
+      str_md5 = #{row.strMd5,jdbcType=VARCHAR},
+      dice = #{row.dice,jdbcType=VARCHAR},
+      total_dice = #{row.totalDice,jdbcType=VARCHAR},
+      result_bet = #{row.resultBet,jdbcType=VARCHAR},
+      insert_date = #{row.insertDate,jdbcType=TIMESTAMP},
+      result_bet_bin = #{row.resultBetBin,jdbcType=VARCHAR},
+      trend = #{row.trend,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saigonbpo.wsqc.Model.ReeWatch">
+    update public.ree_watch
+    <set>
+      <if test="strMd5 != null">
+        str_md5 = #{strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="dice != null">
+        dice = #{dice,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDice != null">
+        total_dice = #{totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="resultBet != null">
+        result_bet = #{resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null">
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultBetBin != null">
+        result_bet_bin = #{resultBetBin,jdbcType=VARCHAR},
+      </if>
+      <if test="trend != null">
+        trend = #{trend,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saigonbpo.wsqc.Model.ReeWatch">
+    update public.ree_watch
+    set str_md5 = #{strMd5,jdbcType=VARCHAR},
+      dice = #{dice,jdbcType=VARCHAR},
+      total_dice = #{totalDice,jdbcType=VARCHAR},
+      result_bet = #{resultBet,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      result_bet_bin = #{resultBetBin,jdbcType=VARCHAR},
+      trend = #{trend,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

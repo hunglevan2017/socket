@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.saigonbpo.wsqc.Mapper.ReeResultMapper">
+  <resultMap id="BaseResultMap" type="com.saigonbpo.wsqc.Model.ReeResult">
+    <id column="id" jdbcType="BIGINT" property="id" />
+     <result column="str_md5" jdbcType="VARCHAR" property="strMd5" /> 
+    <result column="dice" jdbcType="VARCHAR" property="dice" />
+    <result column="total_dice" jdbcType="VARCHAR" property="totalDice" />
+    <result column="money_bet" jdbcType="VARCHAR" property="moneyBet" />
+    <result column="choose_bet" jdbcType="VARCHAR" property="chooseBet" />
+    <result column="result_bet" jdbcType="VARCHAR" property="resultBet" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="money_player" jdbcType="VARCHAR" property="moneyPlayer" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="insert_date" jdbcType="TIMESTAMP" property="insertDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, str_md5, dice, total_dice, money_bet, choose_bet, result_bet, result, money_player, 
+    note, insert_date
+  </sql>
+  <select id="selectByExample" parameterType="com.saigonbpo.wsqc.Model.ReeResultExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from public.ree_result
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 21
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from public.ree_result
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from public.ree_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saigonbpo.wsqc.Model.ReeResultExample">
+    delete from public.ree_result
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeResult" useGeneratedKeys="true">
+    insert into public.ree_result (str_md5, dice, total_dice, 
+      money_bet, choose_bet, result_bet, 
+      result, money_player, note, 
+      insert_date)
+    values (#{strMd5,jdbcType=VARCHAR}, #{dice,jdbcType=VARCHAR}, #{totalDice,jdbcType=VARCHAR}, 
+      #{moneyBet,jdbcType=VARCHAR}, #{chooseBet,jdbcType=VARCHAR}, #{resultBet,jdbcType=VARCHAR}, 
+      #{result,jdbcType=VARCHAR}, #{moneyPlayer,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{insertDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeResult" useGeneratedKeys="true">
+    insert into public.ree_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="strMd5 != null">
+        str_md5,
+      </if>
+      <if test="dice != null">
+        dice,
+      </if>
+      <if test="totalDice != null">
+        total_dice,
+      </if>
+      <if test="moneyBet != null">
+        money_bet,
+      </if>
+      <if test="chooseBet != null">
+        choose_bet,
+      </if>
+      <if test="resultBet != null">
+        result_bet,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="moneyPlayer != null">
+        money_player,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="insertDate != null">
+        insert_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="strMd5 != null">
+        #{strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="dice != null">
+        #{dice,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDice != null">
+        #{totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyBet != null">
+        #{moneyBet,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseBet != null">
+        #{chooseBet,jdbcType=VARCHAR},
+      </if>
+      <if test="resultBet != null">
+        #{resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyPlayer != null">
+        #{moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null">
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saigonbpo.wsqc.Model.ReeResultExample" resultType="java.lang.Long">
+    select count(*) from public.ree_result
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update public.ree_result
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.strMd5 != null">
+        str_md5 = #{row.strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dice != null">
+        dice = #{row.dice,jdbcType=VARCHAR},
+      </if>
+      <if test="row.totalDice != null">
+        total_dice = #{row.totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="row.moneyBet != null">
+        money_bet = #{row.moneyBet,jdbcType=VARCHAR},
+      </if>
+      <if test="row.chooseBet != null">
+        choose_bet = #{row.chooseBet,jdbcType=VARCHAR},
+      </if>
+      <if test="row.resultBet != null">
+        result_bet = #{row.resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="row.result != null">
+        result = #{row.result,jdbcType=VARCHAR},
+      </if>
+      <if test="row.moneyPlayer != null">
+        money_player = #{row.moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
+      </if>
+      <if test="row.insertDate != null">
+        insert_date = #{row.insertDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update public.ree_result
+    set id = #{row.id,jdbcType=BIGINT},
+      str_md5 = #{row.strMd5,jdbcType=VARCHAR},
+      dice = #{row.dice,jdbcType=VARCHAR},
+      total_dice = #{row.totalDice,jdbcType=VARCHAR},
+      money_bet = #{row.moneyBet,jdbcType=VARCHAR},
+      choose_bet = #{row.chooseBet,jdbcType=VARCHAR},
+      result_bet = #{row.resultBet,jdbcType=VARCHAR},
+      result = #{row.result,jdbcType=VARCHAR},
+      money_player = #{row.moneyPlayer,jdbcType=VARCHAR},
+      note = #{row.note,jdbcType=VARCHAR},
+      insert_date = #{row.insertDate,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saigonbpo.wsqc.Model.ReeResult">
+    update public.ree_result
+    <set>
+      <if test="strMd5 != null">
+        str_md5 = #{strMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="dice != null">
+        dice = #{dice,jdbcType=VARCHAR},
+      </if>
+      <if test="totalDice != null">
+        total_dice = #{totalDice,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyBet != null">
+        money_bet = #{moneyBet,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseBet != null">
+        choose_bet = #{chooseBet,jdbcType=VARCHAR},
+      </if>
+      <if test="resultBet != null">
+        result_bet = #{resultBet,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyPlayer != null">
+        money_player = #{moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null">
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saigonbpo.wsqc.Model.ReeResult">
+    update public.ree_result
+    set str_md5 = #{strMd5,jdbcType=VARCHAR},
+      dice = #{dice,jdbcType=VARCHAR},
+      total_dice = #{totalDice,jdbcType=VARCHAR},
+      money_bet = #{moneyBet,jdbcType=VARCHAR},
+      choose_bet = #{chooseBet,jdbcType=VARCHAR},
+      result_bet = #{resultBet,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      money_player = #{moneyPlayer,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
