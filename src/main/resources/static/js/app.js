@@ -1,3 +1,4 @@
+//brokerURL: 'ws://demo.saigonbpo.vn:8080/maf/gs-guide-websocket'
 const stompClient = new StompJs.Client({
 	brokerURL: 'ws://localhost:8080/maf/gs-guide-websocket'
 });
