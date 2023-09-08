@@ -10,6 +10,9 @@
     <result column="insert_date" jdbcType="TIMESTAMP" property="insertDate" />
     <result column="result_bet_bin" jdbcType="VARCHAR" property="resultBetBin" />
     <result column="trend" jdbcType="VARCHAR" property="trend" />
+    <result column="money_player" jdbcType="VARCHAR" property="moneyPlayer" />
+    <result column="un_normal" jdbcType="VARCHAR" property="unNormal" />
+    <result column="normal" jdbcType="VARCHAR" property="normal" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, str_md5, dice, total_dice, result_bet, insert_date, result_bet_bin, trend
+    id, str_md5, dice, total_dice, result_bet, insert_date, result_bet_bin, trend, money_player, 
+    un_normal, normal
   </sql>
   <select id="selectByExample" parameterType="com.saigonbpo.wsqc.Model.ReeWatchExample" resultMap="BaseResultMap">
     select
@@ -106,10 +110,12 @@
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeWatch" useGeneratedKeys="true">
     insert into public.ree_watch (str_md5, dice, total_dice, 
       result_bet, insert_date, result_bet_bin, 
-      trend)
+      trend, money_player, un_normal, 
+      normal)
     values (#{strMd5,jdbcType=VARCHAR}, #{dice,jdbcType=VARCHAR}, #{totalDice,jdbcType=VARCHAR}, 
       #{resultBet,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{resultBetBin,jdbcType=VARCHAR}, 
-      #{trend,jdbcType=VARCHAR})
+      #{trend,jdbcType=VARCHAR}, #{moneyPlayer,jdbcType=VARCHAR}, #{unNormal,jdbcType=VARCHAR}, 
+      #{normal,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.saigonbpo.wsqc.Model.ReeWatch" useGeneratedKeys="true">
     insert into public.ree_watch
@@ -135,6 +141,15 @@
       <if test="trend != null">
         trend,
       </if>
+      <if test="moneyPlayer != null">
+        money_player,
+      </if>
+      <if test="unNormal != null">
+        un_normal,
+      </if>
+      <if test="normal != null">
+        normal,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="strMd5 != null">
@@ -157,6 +172,15 @@
       </if>
       <if test="trend != null">
         #{trend,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyPlayer != null">
+        #{moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="unNormal != null">
+        #{unNormal,jdbcType=VARCHAR},
+      </if>
+      <if test="normal != null">
+        #{normal,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -193,6 +217,15 @@
       <if test="row.trend != null">
         trend = #{row.trend,jdbcType=VARCHAR},
       </if>
+      <if test="row.moneyPlayer != null">
+        money_player = #{row.moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="row.unNormal != null">
+        un_normal = #{row.unNormal,jdbcType=VARCHAR},
+      </if>
+      <if test="row.normal != null">
+        normal = #{row.normal,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -207,7 +240,10 @@
       result_bet = #{row.resultBet,jdbcType=VARCHAR},
       insert_date = #{row.insertDate,jdbcType=TIMESTAMP},
       result_bet_bin = #{row.resultBetBin,jdbcType=VARCHAR},
-      trend = #{row.trend,jdbcType=VARCHAR}
+      trend = #{row.trend,jdbcType=VARCHAR},
+      money_player = #{row.moneyPlayer,jdbcType=VARCHAR},
+      un_normal = #{row.unNormal,jdbcType=VARCHAR},
+      normal = #{row.normal,jdbcType=VARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,6 +272,15 @@
       <if test="trend != null">
         trend = #{trend,jdbcType=VARCHAR},
       </if>
+      <if test="moneyPlayer != null">
+        money_player = #{moneyPlayer,jdbcType=VARCHAR},
+      </if>
+      <if test="unNormal != null">
+        un_normal = #{unNormal,jdbcType=VARCHAR},
+      </if>
+      <if test="normal != null">
+        normal = #{normal,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -247,7 +292,10 @@
       result_bet = #{resultBet,jdbcType=VARCHAR},
       insert_date = #{insertDate,jdbcType=TIMESTAMP},
       result_bet_bin = #{resultBetBin,jdbcType=VARCHAR},
-      trend = #{trend,jdbcType=VARCHAR}
+      trend = #{trend,jdbcType=VARCHAR},
+      money_player = #{moneyPlayer,jdbcType=VARCHAR},
+      un_normal = #{unNormal,jdbcType=VARCHAR},
+      normal = #{normal,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

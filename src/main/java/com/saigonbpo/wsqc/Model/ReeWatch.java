@@ -20,9 +20,17 @@ public class ReeWatch {
     @JsonProperty("Result")
     private String resultBet;
 
-
     @JsonProperty("Trend")
     private String trend;
+    
+    @JsonProperty("UnNormal")
+    private String unNormal;
+
+    @JsonProperty("Normal")
+    private String normal;
+    
+    @JsonProperty("Money")
+    private String moneyPlayer;
     
     @JsonProperty("Time")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone = "GMT+7")
@@ -30,6 +38,7 @@ public class ReeWatch {
 
     @JsonIgnore
     private String resultBetBin;
+
 
 
     @JsonIgnore
@@ -44,12 +53,13 @@ public class ReeWatch {
     public String getStrMd5() {
         return strMd5;
     }
-
+    
     @JsonIgnore
     public void setStrMd5(String strMd5) {
         this.strMd5 = strMd5;
     }
 
+   
     public String getDice() {
         return dice;
     }
@@ -96,5 +106,29 @@ public class ReeWatch {
 
     public void setTrend(String trend) {
         this.trend = trend;
+    }
+
+    public String getMoneyPlayer() {
+        return moneyPlayer;
+    }
+
+    public void setMoneyPlayer(String moneyPlayer) {
+        this.moneyPlayer = moneyPlayer;
+    }
+
+    public String getUnNormal() {
+        return unNormal;
+    }
+
+    public void setUnNormal(String unNormal) {
+        this.unNormal = unNormal;
+    }
+
+    public String getNormal() {
+        return normal;
+    }
+
+    public void setNormal(String normal) {
+        this.normal = normal;
     }
 }

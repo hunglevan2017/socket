@@ -644,6 +644,216 @@ public class ReeWatchExample {
             addCriterion("trend not between", value1, value2, "trend");
             return (Criteria) this;
         }
+
+        public Criteria andMoneyPlayerIsNull() {
+            addCriterion("money_player is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerIsNotNull() {
+            addCriterion("money_player is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerEqualTo(String value) {
+            addCriterion("money_player =", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerNotEqualTo(String value) {
+            addCriterion("money_player <>", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerGreaterThan(String value) {
+            addCriterion("money_player >", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerGreaterThanOrEqualTo(String value) {
+            addCriterion("money_player >=", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerLessThan(String value) {
+            addCriterion("money_player <", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerLessThanOrEqualTo(String value) {
+            addCriterion("money_player <=", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerLike(String value) {
+            addCriterion("money_player like", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerNotLike(String value) {
+            addCriterion("money_player not like", value, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerIn(List<String> values) {
+            addCriterion("money_player in", values, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerNotIn(List<String> values) {
+            addCriterion("money_player not in", values, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerBetween(String value1, String value2) {
+            addCriterion("money_player between", value1, value2, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyPlayerNotBetween(String value1, String value2) {
+            addCriterion("money_player not between", value1, value2, "moneyPlayer");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalIsNull() {
+            addCriterion("un_normal is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalIsNotNull() {
+            addCriterion("un_normal is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalEqualTo(String value) {
+            addCriterion("un_normal =", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalNotEqualTo(String value) {
+            addCriterion("un_normal <>", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalGreaterThan(String value) {
+            addCriterion("un_normal >", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalGreaterThanOrEqualTo(String value) {
+            addCriterion("un_normal >=", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalLessThan(String value) {
+            addCriterion("un_normal <", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalLessThanOrEqualTo(String value) {
+            addCriterion("un_normal <=", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalLike(String value) {
+            addCriterion("un_normal like", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalNotLike(String value) {
+            addCriterion("un_normal not like", value, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalIn(List<String> values) {
+            addCriterion("un_normal in", values, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalNotIn(List<String> values) {
+            addCriterion("un_normal not in", values, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalBetween(String value1, String value2) {
+            addCriterion("un_normal between", value1, value2, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnNormalNotBetween(String value1, String value2) {
+            addCriterion("un_normal not between", value1, value2, "unNormal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalIsNull() {
+            addCriterion("normal is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalIsNotNull() {
+            addCriterion("normal is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalEqualTo(String value) {
+            addCriterion("normal =", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalNotEqualTo(String value) {
+            addCriterion("normal <>", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalGreaterThan(String value) {
+            addCriterion("normal >", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalGreaterThanOrEqualTo(String value) {
+            addCriterion("normal >=", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalLessThan(String value) {
+            addCriterion("normal <", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalLessThanOrEqualTo(String value) {
+            addCriterion("normal <=", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalLike(String value) {
+            addCriterion("normal like", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalNotLike(String value) {
+            addCriterion("normal not like", value, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalIn(List<String> values) {
+            addCriterion("normal in", values, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalNotIn(List<String> values) {
+            addCriterion("normal not in", values, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalBetween(String value1, String value2) {
+            addCriterion("normal between", value1, value2, "normal");
+            return (Criteria) this;
+        }
+
+        public Criteria andNormalNotBetween(String value1, String value2) {
+            addCriterion("normal not between", value1, value2, "normal");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
