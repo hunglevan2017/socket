@@ -27,4 +27,6 @@ public interface ReeResultMapper {
     int updateByPrimaryKeySelective(ReeResult row);
 
     int updateByPrimaryKey(ReeResult row);
+    
+    int countUnNormal();
 }

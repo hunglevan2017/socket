@@ -47,6 +47,10 @@ public class Watcher extends TextWebSocketHandler {
 		
 		List<ReeWatch> responseDataWatch = fetchDataWatch();
 		messagingTemplate.convertAndSend("/topic/fetchDataWatch", responseDataWatch);
+		
+		
+		int UnNormal = reeResultMapper.countUnNormal();
+		messagingTemplate.convertAndSend("/topic/fetchStatic",String.format("UnNormal: %s, Normal: %s", UnNormal, 21-UnNormal) );
 	}
 
 	private List<ReeResult> fetchData() {

@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.saigonbpo.wsqc.Mapper.ReeResultMapper;
 import com.saigonbpo.wsqc.Model.ReeResult;
@@ -20,22 +22,15 @@ import com.saigonbpo.wsqc.Model.ReeResultExample;
  *         tracking location
  * 
  */
-@RestController
+@Controller
 public class AceCtrl {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	ReeResultMapper reeResultMapper;
 
-	@GetMapping(value = "/ace", produces = { "application/json;charset=UTF-8" })
-	public ReeResult ace() {
-
-		ReeResultExample example = new ReeResultExample();
-		example.createCriteria();
-		example.setOrderByClause("id desc");
-		return reeResultMapper.selectByExample(example).get(0);
+	@GetMapping("/ace")
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("index.html");
+		return mav;
 	}
-
-
 
 }

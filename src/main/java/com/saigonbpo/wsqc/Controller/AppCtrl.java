@@ -25,7 +25,14 @@ public class AppCtrl {
 		return mav;
 	}
 	
-	@MessageMapping("/fetch")
+	@MessageMapping("/fetchstatic")
+	@SendTo("/topic/fetchStatic")
+	public String getstatic(String numUnNormal) throws Exception {
+		Thread.sleep(1000);
+		return numUnNormal;
+	}
+	
+	@MessageMapping("/fetchDataResul")
 	@SendTo("/topic/fetchDataResult")
 	public List<ReeResult> getResult(List<ReeResult> reeResults) throws Exception {
 		Thread.sleep(1000); 

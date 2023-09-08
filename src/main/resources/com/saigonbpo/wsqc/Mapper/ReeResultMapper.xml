@@ -298,4 +298,17 @@
       insert_date = #{insertDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+   <select id="countUnNormal" resultType="int">
+    with t as (
+		select *
+		from ree_watch
+		order by id desc
+		limit 21
+	)
+	select count(*)
+	from t
+	where trend ='UnNormal'
+  </select>
+  
 </mapper>

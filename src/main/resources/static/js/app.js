@@ -1,6 +1,7 @@
-//brokerURL: 'ws://demo.saigonbpo.vn:8080/maf/gs-guide-websocket'
+
 const stompClient = new StompJs.Client({
-	brokerURL: 'ws://localhost:8080/maf/gs-guide-websocket'
+	//brokerURL: 'ws://localhost:8080/maf/gs-guide-websocket'
+	brokerURL: 'ws://demo.saigonbpo.vn:8080/maf/gs-guide-websocket'
 });
 
 
@@ -14,19 +15,18 @@ function connect() {
 stompClient.onConnect = (frame) => {
 	//setConnected(true);
 	console.log('Connected: ' + frame);
-
-	stompClient.subscribe('/topic/fetchDataWatch', (record) => {
-			console.log(1);
-		console.log(record.body);
-		showData('watch', JSON.parse(record.body));
-	});
-
+	
 	stompClient.subscribe('/topic/fetchDataResult', (record) => {
 		showData('conversation', JSON.parse(record.body));
 	});
-
-
-
+	
+	stompClient.subscribe('/topic/fetchDataWatch', (record) => {
+		showData('watch', JSON.parse(record.body));
+	});
+	
+	stompClient.subscribe('/topic/fetchStatic', (record) => {
+		$('#static').html(record.body);
+	});
 };
 
 function showData(idTable, jsonArray) {
