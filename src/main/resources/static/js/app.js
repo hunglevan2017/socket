@@ -1,7 +1,7 @@
 
 const stompClient = new StompJs.Client({
 	//brokerURL: 'ws://localhost:8080/maf/gs-guide-websocket'
-	brokerURL: 'ws://demo.saigonbpo.vn:8080/maf/gs-guide-websocket'
+	brokerURL: 'wss://demo.saigonbpo.vn/maf/gs-guide-websocket'
 });
 
 
